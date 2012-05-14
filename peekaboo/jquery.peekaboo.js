@@ -1,5 +1,5 @@
 // Peek-A-Boo jQuery Plugin
-// Version 1.0.0
+// Version 1.1.0
 //
 // Copyright (c) 2012, Andy Dirnberger
 // All rights reserved.
