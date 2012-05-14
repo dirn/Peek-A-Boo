@@ -98,14 +98,21 @@
         }, settings.speedOut);
       };
       return $this.hover(function() {
-        var $caption, caption_height, top;
+        var $caption, height, top;
         $this = $(this);
         hover_active = true;
         active_item = this;
-        $caption = $this.find(settings.caption);
-        caption_height = $caption.innerHeight();
-        top = $this.height() - caption_height;
-        $this.find('.' + settings.wrapperClass).height(caption_height).animate({
+        if ($this.data('top') && $this.data('height')) {
+          top = $this.data('top');
+          height = $this.data('height');
+        } else {
+          $caption = $this.find(settings.caption);
+          height = $caption.innerHeight();
+          top = $this.height() - height;
+          $this.data('top', top);
+          $this.data('height', height);
+        }
+        $this.find('.' + settings.wrapperClass).height(height).animate({
           top: top
         }, settings.speedOver);
         return $this.find(settings.caption).animate({

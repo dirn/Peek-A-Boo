@@ -93,17 +93,26 @@ $.fn.extend({
             # Capture the active item, this is needed for hiding later
             active_item = this
 
-            $caption = $this.find settings.caption
+            # Check for the values for the size and top of the caption
+            if $this.data('top') and $this.data('height')
+                top = $this.data 'top'
+                height = $this.data 'height'
+            else
+                $caption = $this.find settings.caption
 
-            # Get the height of the caption ...
-            caption_height = $caption.innerHeight()
-            # and substract it from the height of the parent to get the
-            # position of the caption
-            top = $this.height() - caption_height
+                # Get the height of the caption ...
+                height = $caption.innerHeight()
+                # and substract it from the height of the parent to get the
+                # position of the caption
+                top = $this.height() - height
+
+                # Save the values so we don't need to calculate them again
+                $this.data 'top', top
+                $this.data 'height', height
 
             # Assign the position to create a slide up effect. Aslo set the
             # height of the overlay to match the height of the caption.
-            $this.find('.' + settings.wrapperClass).height(caption_height).animate {top: top}, settings.speedOver
+            $this.find('.' + settings.wrapperClass).height(height).animate {top: top}, settings.speedOver
             $this.find(settings.caption).animate {top: top}, settings.speedOver
         ->
             # Clear the hover_active flag to allow the caption to hide
