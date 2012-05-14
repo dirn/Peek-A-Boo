@@ -5,7 +5,39 @@ upon hover.
 
 - jQuery support: 1.4+
 
-For documentation, usage, and examples, see https://github.com/dirn/Peek-A-Boo
+### Documentation
+
+Peek-A-Boo uses the following settings:
+
+* `caption` - A string to use as the selector for finding captions, default
+`.peekaboo`
+* `delay` - A number representing the number of milliseconds before hiding a
+caption after mouseover, default `500`
+* `opacity` - A number indicating the opacity of the overlay, default `0.4`
+* `speedOut` - A string or number determining the speed at which the overlay
+will hide, default `normal`
+* `speedOver` - A string or number determining the speed at which the overlay
+will appear, default 'fast'
+* `wrapperClass` - A string to use as the class name for the overlay, default
+`peekaboo-wrapper`
+
+### Usage
+
+`.peekaboo()`
+
+Load up Peek-A-Boo using the default settings.
+
+`.peekaboo(selector)`
+
+* `selector` - A string to use as the selector for finding captions.
+
+`.peekaboo(settings)`
+
+* `settings` - A map of options (documented above) to pass to the function.
+
+### Examples
+
+For examples, see https://github.com/dirn/Peek-A-Boo
 
 ### Contributing to Peek-A-Boo
 
