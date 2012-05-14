@@ -1,0 +1,18 @@
+{
+  "author": "Andy Dirnberger",
+  "name": "Peek-A-Boo",
+  "version": "1.0.0",
+  "description": "A jQuery plugin to show a caption on hover",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/dirn/Peek-A-Boo"
+  },
+  "engines": {
+    "node": ">= 0.4.0"
+  },
+  "dependencies": "",
+  "devDependencies": {
+    "coffee-script": ">= 1.2",
+    "uglify-js": ">= 1.2.5"
+  }
+}
