@@ -37,7 +37,7 @@
 
   $.fn.extend({
     peekaboo: function(options) {
-      var $this, active_item, hide_function, hover_active, settings;
+      var $overlay, $this, active_item, hide_function, hover_active, settings, width;
       $this = $(this);
       active_item = null;
       hover_active = false;
@@ -50,25 +50,37 @@
         caption: '.peekaboo',
         delay: 500,
         opacity: 0.4,
+        padding: 0,
         speedOut: 'normal',
         speedOver: 'fast',
         wrapperClass: 'peekaboo-wrapper'
       }, options);
-      $('<div/>').addClass(settings.wrapperClass).css({
+      $overlay = $('<div/>').addClass(settings.wrapperClass).css({
         background: '#000',
         opacity: settings.opacity,
+        padding: settings.padding,
         position: 'absolute',
         top: $this.height(),
-        width: $this.width(),
         zIndex: 100
       }).insertBefore($this.find(settings.caption));
+      width = $this.width();
+      if ($overlay.css('padding-left')) {
+        width -= parseInt($overlay.css('padding-left'));
+      }
+      if ($overlay.css('padding-right')) {
+        width -= parseInt($overlay.css('padding-right'));
+      }
+      $overlay.css({
+        width: width
+      });
       $this.css({
         position: 'relative'
       });
       $this.find(settings.caption).css({
+        padding: settings.padding,
         position: 'absolute',
         top: $this.height(),
-        width: $this.width(),
+        width: width,
         zIndex: 200
       });
       hide_function = function() {
@@ -86,11 +98,12 @@
         }, settings.speedOut);
       };
       return $this.hover(function() {
-        var caption_height, top;
+        var $caption, caption_height, top;
         $this = $(this);
         hover_active = true;
         active_item = this;
-        caption_height = $this.find(settings.caption).height();
+        $caption = $this.find(settings.caption);
+        caption_height = $caption.innerHeight();
         top = $this.height() - caption_height;
         $this.find('.' + settings.wrapperClass).height(caption_height).animate({
           top: top

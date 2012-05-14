@@ -13,6 +13,8 @@ Peek-A-Boo uses the following settings:
 `.peekaboo`
 * `delay` - A number representing the number of milliseconds before hiding a
 caption after mouseover, default `500`
+* `padding` - A string or number representing the amount of padding to add to
+the caption and its overlay, default `0`
 * `opacity` - A number indicating the opacity of the overlay, default `0.4`
 * `speedOut` - A string or number determining the speed at which the overlay
 will hide, default `normal`
